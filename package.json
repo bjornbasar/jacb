@@ -1,0 +1,28 @@
+{
+  "name": "jacb",
+  "version": "1.0.0",
+  "description": "Just another chat box",
+  "main": "app.js",
+  "dependencies": {
+    "express": "^4.16.3"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ian0583/jacb.git"
+  },
+  "keywords": [
+    "chatbox",
+    "random",
+    "bot"
+  ],
+  "author": "Bjorn Christian Basar",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/ian0583/jacb/issues"
+  },
+  "homepage": "https://github.com/ian0583/jacb#readme"
+}
