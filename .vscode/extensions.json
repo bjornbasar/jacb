@@ -1,0 +1,10 @@
+{
+  "recommendations": [
+    "steoates.autoimport",
+    "editorconfig.editorconfig",
+    "christian-kohler.path-intellisense",
+    "eg2.tslint",
+    "waderyan.gitblame",
+    "codezombiech.gitignore"
+  ]
+}
