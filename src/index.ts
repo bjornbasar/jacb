@@ -1,6 +1,6 @@
 const telegraf = require('telegraf');
 
-const bot = new telegraf('305843836:AAFHplqwLuNUNZyOS6KdoiMFq27QcqzyZT0');
+const bot = new telegraf('token');
 
 bot.telegram.deleteWebhook();
 
