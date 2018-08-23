@@ -1,2 +1,2 @@
 # jacb
-Just another chat box
+Just another chat bot
