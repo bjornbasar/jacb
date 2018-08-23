@@ -25,7 +25,8 @@
     "async": "^2.6.1",
     "modules": "^0.4.0",
     "request": "^2.88.0",
-    "request-promise": "^4.2.2"
+    "request-promise": "^4.2.2",
+    "telegraf": "^3.22.2"
   },
   "devDependencies": {
     "@types/jest": "^23.3.1",
