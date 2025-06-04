@@ -1,5 +1,3 @@
-const fetch = require('node-fetch');
-
 module.exports = async function handleGhCommand(args) {
     if (!args[0]) {
         return 'Usage:\n' +

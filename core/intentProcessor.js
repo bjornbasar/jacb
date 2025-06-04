@@ -1,5 +1,6 @@
 const getOpenAIResponse = require('./openaiResponder');
 const handleTelegramCommands = require('./telegramCommands');
+const getStandardReply = require('./standardReplies');
 
 module.exports = async function handleMessage(senderId, message, channel = null) {
     const trimmed = message.trim();
@@ -15,28 +16,8 @@ module.exports = async function handleMessage(senderId, message, channel = null)
         if (cmdResponse) return cmdResponse;
     }
 
-    //
-    // 👋 Keyword responses for all channels
-    //
-    if (/\b(hi|hello)\b/i.test(lower)) {
-        return 'Hey there! 👋 How can I help you today?';
-    }
-
-    if (/\b(help|support)\b/i.test(lower)) {
-        let response = 'I can help answer questions, offer basic replies, or just chat.';
-        if (channel === 'telegram') {
-            response += ' Try typing `/gh <repo>` to check GitHub status or `/gh audit` for org logs.';
-        }
-        return response;
-    }
-
-    if (/\b(bye|goodbye|see ya)\b/i.test(lower)) {
-        return 'Goodbye! 👋 Come back anytime.';
-    }
-
-    if (/\b(thanks|thank you)\b/i.test(lower)) {
-        return 'You’re welcome! 😊';
-    }
+    const standardReply = getStandardReply(message, channel);
+    if (standardReply) return standardReply;
 
     //
     // 🤖 OpenAI fallback

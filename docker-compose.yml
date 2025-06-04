@@ -1,10 +1,10 @@
-version: '3.8'
-
 services:
-  chatbot:
-    build: .
+  jacb:
+    image: peopsquik/jacb:latest
+    container_name: jacb
+    restart: unless-stopped
     ports:
       - "3000:3000"
     env_file:
-      - .env
-    restart: unless-stopped
+      - ./jacb.env
+

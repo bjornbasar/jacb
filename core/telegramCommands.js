@@ -1,6 +1,6 @@
 // telegramCommands.js
 const TELEGRAM_ADMIN_ID = process.env.TELEGRAM_ADMIN_ID;
-const handleGhCommand = require('./telegram/ghCommand');
+const handleGhCommand = require('./telegram/ghCommands');
 const handleHelpCommand = require('./telegram/helpCommand');
 
 module.exports = async function handleTelegramCommands(senderId, message, parts) {
