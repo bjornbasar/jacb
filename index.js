@@ -16,5 +16,8 @@ app.post('/webhook/telegram', telegramHandler.handle);
 app.get('/webhook/messenger', messengerHandler.verify);
 app.post('/webhook/messenger', messengerHandler.handle);
 
+// Health check endpoint
+app.get('/', (req, res) => res.send('Bot is running'));
+
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => console.log(`Bot server running on port ${PORT}`));

@@ -8,7 +8,9 @@ WORKDIR /app
 COPY package*.json ./
 
 # Install only production dependencies
-RUN npm install --omit=dev
+RUN npm install --omit=dev && \
+    apk update && apk add curl && \
+    rm -rf /var/cache/apk/*
 
 # Copy remaining project files
 COPY . .
