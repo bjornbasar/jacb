@@ -25,27 +25,27 @@ module.exports = async function handleGhCommand(args) {
 };
 
 async function fetchRepoSummary(repo) {
-  try {
-    const res = await fetch(`https://api.github.com/repos/${repo}`, {
-      headers: githubHeaders()
-    });
+    try {
+        const res = await fetch(`https://api.github.com/repos/${repo}`, {
+            headers: githubHeaders()
+        });
 
-    if (!res.ok) return `❌ GitHub error: ${res.status}`;
-    const r = await res.json();
+        if (!res.ok) return `❌ GitHub error: ${res.status}`;
+        const r = await res.json();
 
-    return (
-      `📘 *${r.full_name}*\n` +
-      (r.description ? `📝 ${r.description}\n` : '') +
-      `👤 Owner: ${r.owner.login}\n` +
-      `🔄 Default Branch: ${r.default_branch}\n` +
-      `⭐ Stars: ${r.stargazers_count}   🍴 Forks: ${r.forks_count}   🐛 Issues: ${r.open_issues_count}\n` +
-      `🆕 Created: ${new Date(r.created_at).toLocaleDateString()}   🔄 Updated: ${new Date(r.updated_at).toLocaleDateString()}\n` +
-      `🔗 ${r.html_url}`
-    );
-  } catch (err) {
-    console.error('Repo fetch error:', err);
-    return '❌ Failed to fetch repository info.';
-  }
+        return (
+            `📘 *${r.full_name}*\n` +
+            (r.description ? `📝 ${r.description}\n` : '') +
+            `👤 Owner: ${r.owner.login}\n` +
+            `🔄 Default Branch: ${r.default_branch}\n` +
+            `⭐ Stars: ${r.stargazers_count}   🍴 Forks: ${r.forks_count}   🐛 Issues: ${r.open_issues_count}\n` +
+            `🆕 Created: ${new Date(r.created_at).toLocaleDateString()}   🔄 Updated: ${new Date(r.updated_at).toLocaleDateString()}\n` +
+            `🔗 ${r.html_url}`
+        );
+    } catch (err) {
+        console.error('Repo fetch error:', err);
+        return '❌ Failed to fetch repository info.';
+    }
 }
 
 async function fetchAuditLog(org) {

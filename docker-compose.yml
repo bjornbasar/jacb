@@ -2,6 +2,8 @@ services:
   jacb:
     image: peopsquik/jacb:latest
     container_name: jacb
+    build:
+      dockerfile: Dockerfile
     restart: unless-stopped
     ports:
       - "3000:3000"
