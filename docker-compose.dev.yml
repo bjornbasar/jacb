@@ -1,0 +1,5 @@
+services:
+  jacb:
+    command: npm run dev
+    volumes:
+      - ./src:/app/src

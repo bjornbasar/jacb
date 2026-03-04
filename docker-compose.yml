@@ -6,7 +6,9 @@ services:
       dockerfile: Dockerfile
     restart: always
     ports:
-      - "3000:3000"
+      - "3500:3000"
+    environment:
+      NODE_OPTIONS: --dns-result-order=ipv4first
     env_file:
       - ./.env
     healthcheck:

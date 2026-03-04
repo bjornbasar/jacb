@@ -1,4 +1,4 @@
-module.exports = function getStandardReply(message, channel = null) {
+export default function getStandardReply(message, channel = null) {
     const lower = message.trim().toLowerCase();
 
     if (/\b(hi|hello)\b/.test(lower)) {
@@ -18,8 +18,8 @@ module.exports = function getStandardReply(message, channel = null) {
     }
 
     if (/\b(thanks|thank you)\b/.test(lower)) {
-        return 'You’re welcome! 😊';
+        return "You're welcome! 😊";
     }
 
     return null;
-};
+}
