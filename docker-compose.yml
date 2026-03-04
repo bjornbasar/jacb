@@ -1,0 +1,17 @@
+services:
+  jacb:
+    image: peopsquik/jacb:latest
+    container_name: jacb
+    build:
+      dockerfile: Dockerfile
+    restart: always
+    ports:
+      - "3000:3000"
+    env_file:
+      - ./.env
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:3000"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+
