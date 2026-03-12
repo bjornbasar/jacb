@@ -1,4 +1,5 @@
 import handleGhCommand from './github.js';
+import handleDockerCommand from './docker.js';
 
 const ADMIN_ID = process.env.TELEGRAM_ADMIN_ID;
 
@@ -14,8 +15,20 @@ export default async function handleTelegramCmds(senderId, parts) {
     switch (cmd) {
         case '/gh':
             return await handleGhCommand(args);
+        case '/docker':
+        case '/d':
+            return await handleDockerCommand(args);
         case '/help':
-            return 'I can help answer questions, offer basic replies, or just chat. Try `/gh <repo>` to check GitHub status or `/gh audit` for org logs.';
+            return (
+                'Commands:\n' +
+                '`/gh` — GitHub status\n' +
+                '`/docker` (`/d`) — Docker containers\n' +
+                '`/d ps` — running containers\n' +
+                '`/d projects` — compose projects\n' +
+                '`/d stats` — resource usage\n' +
+                '`/d logs <name>` — container logs\n' +
+                '`/d restart <name>` — restart container'
+            );
         default:
             return null;
     }

@@ -9,6 +9,8 @@ services:
       - "3500:3000"
     environment:
       NODE_OPTIONS: --dns-result-order=ipv4first
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock:ro
     env_file:
       - ./.env
     healthcheck:
