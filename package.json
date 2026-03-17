@@ -1,6 +1,6 @@
 {
 	"name": "jacb",
-	"version": "3.0.0",
+	"version": "3.1.0",
 	"description": "JACB Just another chat bot",
 	"type": "module",
 	"main": "src/index.js",
