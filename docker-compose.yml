@@ -1,9 +1,7 @@
 services:
   jacb:
-    image: peopsquik/jacb:latest
+    image: 192.168.4.9:5000/jacb:dev
     container_name: jacb
-    build:
-      dockerfile: Dockerfile
     restart: always
     ports:
       - "3500:3000"
