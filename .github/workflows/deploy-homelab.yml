@@ -3,7 +3,7 @@ name: Deploy to Homelab
 on:
   workflow_dispatch:
   push:
-    branches: [main]
+    branches: [master]
 
 env:
   REGISTRY: 192.168.4.9:5000
