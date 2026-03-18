@@ -11,7 +11,8 @@ env:
   TAG: dev
   NALLE: ubuntu@192.168.4.9
   LARS: ubuntu@192.168.4.37
-  PROJECT_DIR: /data/personal/jacb
+  NALLE_DIR: /data/personal/jacb
+  LARS_DIR: /data/ui/jacb
 
 jobs:
   build-and-deploy:
@@ -20,7 +21,7 @@ jobs:
     steps:
       - name: Build on Nalle
         run: |
-          ssh $NALLE "cd $PROJECT_DIR && git pull --ff-only && docker build -t $REGISTRY/$IMAGE:$TAG -f Dockerfile ."
+          ssh $NALLE "cd $NALLE_DIR && git pull --ff-only && docker build -t $REGISTRY/$IMAGE:$TAG -f Dockerfile ."
 
       - name: Push to local registry
         run: |
@@ -28,4 +29,4 @@ jobs:
 
       - name: Deploy on Lars
         run: |
-          ssh $LARS "cd $PROJECT_DIR && docker compose pull && docker compose up -d"
+          ssh $LARS "cd $LARS_DIR && docker compose pull && docker compose up -d"
