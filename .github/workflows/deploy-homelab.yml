@@ -19,9 +19,13 @@ jobs:
     runs-on: [self-hosted, homelab]
 
     steps:
+      - name: Pull & decrypt secrets on Nalle
+        run: |
+          ssh $NALLE "cd $NALLE_DIR && git pull --ff-only && sops decrypt --input-type dotenv --output-type dotenv --output .env .env.enc"
+
       - name: Build on Nalle
         run: |
-          ssh $NALLE "cd $NALLE_DIR && git pull --ff-only && docker build -t $REGISTRY/$IMAGE:$TAG -f Dockerfile ."
+          ssh $NALLE "cd $NALLE_DIR && docker build -t $REGISTRY/$IMAGE:$TAG -f Dockerfile ."
 
       - name: Push to local registry
         run: |
