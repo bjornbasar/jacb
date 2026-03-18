@@ -30,3 +30,12 @@ jobs:
       - name: Deploy on Lars
         run: |
           ssh $LARS "cd $LARS_DIR && docker compose pull && docker compose up -d"
+
+      - name: Notify Slack
+        if: always()
+        run: |
+          STATUS=${{ job.status }}
+          ICON=$([ "$STATUS" = "success" ] && echo ":white_check_mark:" || echo ":x:")
+          echo "{\"text\":\"${ICON} *jacb* deploy ${STATUS} (Lars)\"}" > /tmp/slack-msg.json
+          curl -s -X POST -H 'Content-type: application/json' -d @/tmp/slack-msg.json "$(cat ~/.slack-webhook)"
+          rm -f /tmp/slack-msg.json
